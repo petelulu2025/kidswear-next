@@ -1,107 +1,232 @@
 import type { Metadata } from "next";
 
+import Hero from "./components/Hero";
+import AustralianBrandRequirements from "./components/AustralianBrandRequirements";
+import ProductRange from "./components/ProductRange";
+import MaterialsCompliance from "./components/MaterialsCompliance";
+import ProductionPlanning from "./components/ProductionPlanning";
+import FactoryProof from "./components/FactoryProof";
+import AustraliaRemoteCollaboration from "./components/AustraliaRemoteCollaboration";
+import BuyerQualification from "./components/BuyerQualification";
+import FAQ from "./components/FAQ";
+import CertificationProof from "./components/CertificationProof";
+import FinalCTA from "./components/FinalCTA";
+
+
+/* =========================================================
+   PAGE SEO
+========================================================= */
+
+const siteUrl = "https://kidswearfactory.com";
+
+const canonicalUrl =
+  `${siteUrl}/australia-kids-clothing-manufacturer/`;
+
+const metaTitle =
+  "Kids Clothing Manufacturer for Australian Brands | Kidswearfactory";
+
+const metaDescription =
+  "Kids clothing manufacturer for Australian brands offering OEM, ODM, private label, organic cotton options, sampling, quality control and bulk production.";
+
+
 export const metadata: Metadata = {
-  title:
-    "Kids Clothing Manufacturer for Australian Brands | Kidswearfactory",
+  metadataBase: new URL(siteUrl),
 
-  description:
-    "Kidswearfactory supports Australian brands with custom kids clothing manufacturing, OEM, private label production and quality control.",
+  title: metaTitle,
 
-robots: {
-  index: true,
-  follow: true,
-},
-alternates: {
-  canonical:
-    "https://kidswearfactory.com/australia-kids-clothing-manufacturer/",
-},
+  description: metaDescription,
+
+  alternates: {
+    canonical: canonicalUrl,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+
+    url: canonicalUrl,
+
+    siteName: "Kidswearfactory",
+
+    title: metaTitle,
+
+    description: metaDescription,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: metaTitle,
+
+    description: metaDescription,
+  },
 };
+
+
+/* =========================================================
+   STRUCTURED DATA
+
+   FAQPage Schema is already generated inside FAQ.tsx.
+========================================================= */
+
+const organizationId =
+  `${siteUrl}/#organization`;
+
+const serviceId =
+  `${canonicalUrl}#service`;
+
+const webPageId =
+  `${canonicalUrl}#webpage`;
+
+
+const structuredData = {
+  "@context": "https://schema.org",
+
+  "@graph": [
+    /* -----------------------------------------------------
+       ORGANIZATION
+    ----------------------------------------------------- */
+
+    {
+      "@type": "Organization",
+
+      "@id": organizationId,
+
+      name: "Kidswearfactory",
+
+      url: `${siteUrl}/`,
+    },
+
+
+    /* -----------------------------------------------------
+       SERVICE
+    ----------------------------------------------------- */
+
+    {
+      "@type": "Service",
+
+      "@id": serviceId,
+
+      name: "Kids Clothing Manufacturing for Australian Brands",
+
+      url: canonicalUrl,
+
+      serviceType:
+        "OEM, ODM and private label baby and kids clothing manufacturing",
+
+      description:
+        "Custom baby and kids clothing manufacturing for Australian brands, including product development, fabric sourcing, sampling, private label development, quality control and bulk production.",
+
+      provider: {
+        "@id": organizationId,
+      },
+
+      areaServed: {
+        "@type": "Country",
+
+        name: "Australia",
+      },
+
+      audience: {
+        "@type": "BusinessAudience",
+
+        audienceType:
+          "Kidswear brands, retailers and private label businesses",
+      },
+    },
+
+
+    /* -----------------------------------------------------
+       WEB PAGE
+    ----------------------------------------------------- */
+
+    {
+      "@type": "WebPage",
+
+      "@id": webPageId,
+
+      url: canonicalUrl,
+
+      name: metaTitle,
+
+      description: metaDescription,
+
+      isPartOf: {
+        "@type": "WebSite",
+
+        "@id": `${siteUrl}/#website`,
+
+        url: `${siteUrl}/`,
+
+        name: "Kidswearfactory",
+      },
+
+      about: {
+        "@id": serviceId,
+      },
+
+      mainEntity: {
+        "@id": serviceId,
+      },
+
+      inLanguage: "en",
+    },
+  ],
+};
+
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 export default function AustraliaKidsClothingManufacturerPage() {
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#f7f5ef",
-        color: "#1d1d1d",
-        padding: "80px 24px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
+    <>
+      {/* Page-level structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
         }}
-      >
-        <p
-          style={{
-            color: "#365f50",
-            fontSize: "13px",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-          }}
-        >
-          OEM · ODM · Private Label Kidswear
-        </p>
+      />
 
-        <h1
-          style={{
-            maxWidth: "850px",
-            fontSize: "56px",
-            lineHeight: "1.05",
-            margin: "20px 0",
-          }}
-        >
-          Kids Clothing Manufacturer Supporting Australian Brands
-        </h1>
 
-        <p
-          style={{
-            maxWidth: "720px",
-            fontSize: "18px",
-            lineHeight: "1.7",
-            color: "#5d625e",
-          }}
-        >
-          Custom kidswear manufacturing for Australian children's
-          clothing brands, retailers and established private label
-          collections.
-        </p>
+      {/* Main page content */}
+      <main>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "14px",
-            marginTop: "32px",
-            flexWrap: "wrap",
-          }}
-        >
-          <a
-            href="https://kidswearfactory.com/contact/"
-            style={{
-              background: "#293622",
-              color: "#ffffff",
-              padding: "15px 24px",
-              textDecoration: "none",
-            }}
-          >
-            Discuss Your Collection
-          </a>
+        <Hero />
 
-          <a
-            href="https://kidswearfactory.com/products/"
-            style={{
-              border: "1px solid #293622",
-              color: "#293622",
-              padding: "15px 24px",
-              textDecoration: "none",
-            }}
-          >
-            Explore Our Products
-          </a>
-        </div>
-      </div>
-    </main>
+        <AustralianBrandRequirements />
+
+        <ProductRange />
+
+        <MaterialsCompliance />
+        <CertificationProof />
+        <ProductionPlanning />
+
+        <FactoryProof />
+
+        <AustraliaRemoteCollaboration />
+
+        <BuyerQualification />
+
+        <FAQ />
+
+        <FinalCTA />
+
+      </main>
+    </>
   );
 }

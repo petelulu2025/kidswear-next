@@ -1,26 +1,165 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --kw-bg: #f7f5ef;
+  --kw-bg-soft: #f3efe6;
+  --kw-bg-white: #ffffff;
+
+  --kw-green: #293622;
+  --kw-green-soft: #365f50;
+
+  --kw-text: #1d1d1d;
+  --kw-text-soft: #5f655f;
+  --kw-text-muted: #757b75;
+
+  --kw-border: #d9d5cc;
+  --kw-border-soft: #e4e0d8;
+
+  --kw-container: 1280px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #ffffff;
+  color: var(--kw-text);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ----------------------------------
+   Kidswearfactory shared page styles
+----------------------------------- */
+
+.kw-section {
+  width: 100%;
+}
+
+.kw-container {
+  width: min(calc(100% - 48px), var(--kw-container));
+  margin-inline: auto;
+}
+
+.kw-eyebrow {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kw-green-soft);
+}
+
+.kw-h1 {
+  margin: 0;
+  font-size: clamp(42px, 4.2vw, 58px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  color: var(--kw-text);
+}
+
+.kw-h2 {
+  margin: 0;
+  font-size: clamp(32px, 3vw, 44px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 650;
+  color: var(--kw-text);
+}
+
+.kw-h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 650;
+  color: var(--kw-green);
+}
+
+.kw-body {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--kw-text-soft);
+}
+
+.kw-body-small {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--kw-text-soft);
+}
+
+.kw-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 28px;
+  background: var(--kw-green);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.kw-primary-button:hover {
+  background: var(--kw-green-soft);
+  transform: translateY(-1px);
+}
+
+.kw-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 28px;
+  border: 1px solid var(--kw-green);
+  color: var(--kw-green);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.kw-secondary-button:hover {
+  background: var(--kw-green);
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .kw-container {
+    width: min(calc(100% - 32px), var(--kw-container));
+  }
+
+  .kw-h1 {
+    font-size: 40px;
+  }
+
+  .kw-h2 {
+    font-size: 31px;
+  }
 }
